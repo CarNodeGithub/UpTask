@@ -17,7 +17,7 @@ html(lang="es")
             aside.contenedor-proyectos
                 .panel.crear-proyecto 
                     a.boton(href="/nuevo-proyecto") Nuevo Proyecto 
-                    
+                     
                 .panel.lista-proyectos 
                     h2 Proyectos
                     ul#proyectos.proyectos
@@ -25,7 +25,8 @@ html(lang="es")
                         if(proyectos)
                             each proyecto in proyectos 
                                 li
-                                    a(href="")= proyecto.nombre
+                                    a(href=`/proyectos/${proyecto.url}`)= proyecto.nombre
                         
                              
             block contenido
+        script(src="/dist/bundle.js")      

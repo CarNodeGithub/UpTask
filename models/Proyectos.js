@@ -28,7 +28,8 @@ const Proyectos = db.define('proyectos', {
 
 
             proyecto.url = `${ url }-${ shortid.generate() }`
-        }
+        },
+        
     }
 })
 

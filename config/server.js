@@ -1,13 +1,16 @@
 
 // Variables de entorno
 require('dotenv').config()
-//const PORT = process.env.SERVER_PORT || 3000
+
 
 const express = require('express')
 //const app = express()
 const path = require('path')
 const bodyParser = require('body-parser')
 const proyectosRoutes = require('../routes/proyectosRouter')
+
+// helpers
+const helpers = require('./helpers')
 //console.log(proyectosRoutes);
 
 class Server {
@@ -33,6 +36,15 @@ class Server {
   middlewares() {
     this.app.use(bodyParser.json())
     this.app.use(bodyParser.urlencoded({ extended: true }))
+
+    //Pasar vardump a la app
+    this.app.use( ( req, res, next )=>{
+      //Crear variables
+      const fecha = new Date()
+      res.locals.year = fecha.getFullYear()
+      res.locals.vardump = helpers.vardump
+      next()
+    })
   }
 
   routes() {
